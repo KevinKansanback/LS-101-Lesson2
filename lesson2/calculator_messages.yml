@@ -1,0 +1,11 @@
+welcome: "Welcome to your basic Calculator! Please enter your name:" 
+valid_name: "Please make sure you use a valid name."
+number1_message: "Please enter your first number:"
+valid_number: "Hmm, I don't think that's right"
+number2_message: "Please enter your second number:"
+operator_error_prompt: "Please choose 1, 2, 3 or 4"
+perform_again: "Do you want to perform another Calculation? (Y to calculate again or N to stop)"
+perform_again_invalid: "Please type Y to continue or N to stop"
+end_program: "Thank you for using the basic Calculator! Have a great day!"
+
+
