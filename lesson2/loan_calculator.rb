@@ -3,14 +3,14 @@ require 'yaml'
 MESSAGES = YAML.load_file('loan_calculator_messages.yml')
 
 def loan_calculate(p, j, n)
-  p * (j / (1 - (1 + j)**(-n)))
+  p * (j / (1 - (1 + j)**-n))
 end
 
 def prompt(message)
   puts ">>> #{message}"
 end
 
-def retrieve_name()
+def retrieve_name
   name_entry = ''
   loop do
     name_entry = gets.chomp
@@ -23,7 +23,7 @@ def retrieve_name()
   end
   name_entry
 end
-  
+
 def invalid_name_input?(input)
   if input.empty? || input.to_i != 0 || input.start_with?(' ')
     true
@@ -68,7 +68,7 @@ def string_convert_to_num(string)
   end
 end
 
-def retrieve_loan_amount()
+def retrieve_loan_amount
   loop do
     loan_amt_in = gets.chomp
 
@@ -80,7 +80,7 @@ def retrieve_loan_amount()
   end
 end
 
-def retreive_apr()
+def retreive_apr
   loop do
     retreive_apr_rate = gets.chomp
 
@@ -92,10 +92,10 @@ def retreive_apr()
   end
 end
 
-def retrieve_loan_duration()
+def retrieve_loan_duration
   loop do
     loan_dur = gets.chomp
-    
+
     if valid_loan_dur_entry?(loan_dur) && valid_pos_num?(loan_dur)
       return string_convert_to_num(loan_dur)
     else
@@ -133,13 +133,13 @@ def display_invalid_recalc_answer_message(answer)
     prompt(MESSAGES['perform_again_invalid'])
   end
 end
-  
+
 def new_calculation?(answer)
   if answer == 'y' || answer == 'yes'
     true
   end
 end
-  
+
 # START
 prompt(MESSAGES['welcome'])
 
@@ -148,9 +148,9 @@ prompt("Hi #{name}, I hope you enjoy your experience today!")
 
 loop do # main loop
   prompt(MESSAGES['loan_amount_message'])
-  
+
   loan_amount = retrieve_loan_amount()
-  
+
   prompt(MESSAGES['apr_message'])
 
   apr_rate = retreive_apr()
@@ -160,13 +160,14 @@ loop do # main loop
   loan_duration = retrieve_loan_duration()
 
   monthly_payment = loan_calculate(loan_amount, apr_rate, loan_duration)
-  
+
   display_monthly_payment(monthly_payment)
 
   prompt(MESSAGES['perform_again'])
 
   recalc_answer = retrieve_new_calc_answer
-  
+
   break unless new_calculation?(recalc_answer)
 end
+
 prompt(MESSAGES['end_program'])
