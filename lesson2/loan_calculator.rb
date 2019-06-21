@@ -105,7 +105,7 @@ def retrieve_loan_duration
 end
 
 def display_monthly_payment(calculated_payment)
-  payment = format('%02.f', calculated_payment)
+  payment = format('%02.2f', calculated_payment)
   prompt("Your monthly payment is $#{payment}, not too bad!")
 end
 
