@@ -76,7 +76,7 @@ loop do
     #{computer_win_count}")
 
     if player_win_count == 5
-      prompt("You won! great job!")
+      prompt("You won! You're the Grand Champion. Great job!")
       break
     elsif computer_win_count == 5
       prompt("Too bad the computer beat you...")
